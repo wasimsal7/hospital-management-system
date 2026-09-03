@@ -1,2 +1,4 @@
 .vscode/
 backend/venv/
+frontend/.vscode
+frontend/node_modules
