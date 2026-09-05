@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monthly Report</title>
+</head>
+<body>
+  <h2>Monthly Report</h2>
+  <table style="border:solid;">
+    <thead>
+      <tr>
+        <th scope="col" style="border:solid;">Appointment ID</th>
+        <th scope="col" style="border:solid;">Date</th>
+        <th scope="col" style="border:solid;">Time</th>
+        <th scope="col" style="border:solid;">Patient</th>
+        <th scope="col" style="border:solid;">Diagnosis</th>
+        <th scope="col" style="border:solid;">Prescription</th>
+        <th scope="col" style="border:2px solid;">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for appointment in appointments %}
+        <tr>
+          <th scope="row" style="border:solid;">{{ appointment.id  }}</th>
+          <td style="border:solid;">{{ appointment.date }}</td>
+          <td style="border:solid;">{{ appointment.time }}</td>
+          <td style="border:solid;">{{ appointment.patient }}</td>
+          <td style="border:solid;">{{ appointment.diagnosis }}</td>
+          <td style="border:solid;">{{ appointment.prescription }}</td>
+          <td style="border:solid;">{{ appointment.notes }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <th scope="row">Total Appointments</th>
+        <td>{{ appointments | length }}</td>
+      </tr>
+    </tfoot>
+</table>
+</body>
+</html>
