@@ -2,8 +2,6 @@
 
 A full-stack hospital management application supporting three roles — **Admin**, **Doctor**, and **Patient** — with appointment booking, treatment history, scheduled notifications, and async CSV exports.
 
-Built as a personal/local project (no deployment configuration included).
-
 ---
 
 ## Tech Stack
@@ -15,40 +13,6 @@ Built as a personal/local project (no deployment configuration included).
 **Background jobs:** Celery (worker + beat) with Redis as broker/result backend
 
 **Email (dev):** MailHog (catches outgoing mail locally, no real SMTP needed)
-
----
-
-## Project Structure
-
-```
-hospital-management-app/
-├── backend/
-│   ├── venv/                  (not tracked)
-│   ├── app.py                 # App entrypoint, extensions init, Celery beat schedule
-│   ├── config.py              # Config classes (DB, Redis, JWT, mail, webhook)
-│   ├── extensions.py          # SQLAlchemy, JWTManager, Cache, Celery instances
-│   ├── models.py              # User, DoctorProfile, Appointment, History, etc.
-│   ├── routes.py              # All API routes (auth, admin, user blueprints)
-│   ├── tasks.py                # Celery tasks (reminders, reports, CSV export)
-│   ├── templates/
-│   │   └── monthly_report.html
-│   ├── exports/                # Generated CSV exports (auto-created)
-│   └── instance/
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Admin/
-│   │   │   ├── Doctor/
-│   │   │   ├── Patient/
-│   │   │   ├── Login.vue
-│   │   │   ├── Register.vue
-│   │   │   └── Navbar.vue
-│   │   ├── router/index.js
-│   │   ├── App.vue
-│   │   └── main.js
-│   └── index.html
-└── README.md
-```
 
 ---
 
@@ -133,6 +97,40 @@ Google Chat webhooks require a Workspace account to set up. For local testing wi
 - A small local Flask endpoint that just logs the received payload
 
 Either lets you verify the daily reminder job fires with the correct message content, without needing real Google Chat access.
+
+---
+
+## Project Structure
+
+```
+hospital-management-app/
+├── backend/
+│   ├── venv/                  (not tracked)
+│   ├── app.py                 # App entrypoint, extensions init, Celery beat schedule
+│   ├── config.py              # Config classes (DB, Redis, JWT, mail, webhook)
+│   ├── extensions.py          # SQLAlchemy, JWTManager, Cache, Celery instances
+│   ├── models.py              # User, DoctorProfile, Appointment, History, etc.
+│   ├── routes.py              # All API routes (auth, admin, user blueprints)
+│   ├── tasks.py                # Celery tasks (reminders, reports, CSV export)
+│   ├── templates/
+│   │   └── monthly_report.html
+│   ├── exports/                # Generated CSV exports (auto-created)
+│   └── instance/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Admin/
+│   │   │   ├── Doctor/
+│   │   │   ├── Patient/
+│   │   │   ├── Login.vue
+│   │   │   ├── Register.vue
+│   │   │   └── Navbar.vue
+│   │   ├── router/index.js
+│   │   ├── App.vue
+│   │   └── main.js
+│   └── index.html
+└── README.md
+```
 
 ---
 
